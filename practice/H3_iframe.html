@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+  <header>
+    <meta charset="utf-8" />
+    ifram
+  </header>
+
+  <body>
+    <h2>Iframe - target for a link</h2>
+
+    <!-- the src set the default to be XXX  -->
+    <!-- ifram is like a window within the page  -->
+    <!-- we can name that iframe so we can use anchor + href to place some other html inside 
+     the target="name of the iframe" -->
+    <iframe
+      src="table.html"
+      name="iframe_a"
+      height="300px"
+      width="100%"
+      title="Iframe example"
+    >
+    </iframe>
+
+    <p>
+      <a href="H1_meta.html" target="iframe_a"> show H1 in the frame </a>
+    </p>
+
+    <p>
+      <a href="H2_target.html" target="iframe_a"> show H2 in the frame</a>
+    </p>
+  </body>
+</html>

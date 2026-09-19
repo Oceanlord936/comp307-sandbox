@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid View</title>
+    <style>
+      /* 1. everything boxed */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* 2. the 12 columns: 100% / 12 = 8.33% each */
+      .col-1 {
+        width: 8.33%;
+      }
+      .col-2 {
+        width: 16.66%;
+      }
+      .col-3 {
+        width: 25%;
+      }
+      .col-4 {
+        width: 33.33%;
+      }
+      .col-5 {
+        width: 41.66%;
+      }
+      .col-6 {
+        width: 50%;
+      }
+      .col-7 {
+        width: 58.33%;
+      }
+      .col-8 {
+        width: 66.66%;
+      }
+      .col-9 {
+        width: 75%;
+      }
+      .col-10 {
+        width: 83.33%;
+      }
+      .col-11 {
+        width: 91.66%;
+      }
+      .col-12 {
+        width: 100%;
+      }
+
+      /* 3. the columns float freely */
+
+      /* 
+      What [class*="col-"] is
+
+        It's an attribute selector: 
+        "any element whose class attribute contains the text col-". The *= means "contains".
+
+        Yes, it matches every col-1, col-2, … col-12, on any tag.
+
+        Why float ??
+
+        Divs are block elements, so they stack vertically by default. 
+        float: left pulls each column to the left edge, 
+        so the next one sits beside it instead of below. 
+        When a row's widths add up to 100%, the next box wraps to a new line. 
+        That's how the 12-column grid works. 
+        The .row::after clearfix then makes the row contain its floats.
+      */
+      [class*="col-"] {
+        float: left;
+        padding: 15px;
+        border: 1px solid red;
+      }
+
+      /* 4. a row clears the floats */
+      /* only need to clear floats when something breaks
+       because the parent collapsed to height 0. You have three options: 
+       
+       1.Clearfix on the parent (.row::after). Use it when the parent must wrap its floats,
+       for example so a border or background surrounds them, 
+       or so the next block starts below them. 
+       It's the standard fix, and it's what the 12-column grid uses.
+       */
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      /* header and footer: plain full-width blocks */
+      header,
+      footer {
+        background-color: #666;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+
+      /* tablet: 2 columns, phone: 1 column */
+      @media (max-width: 800px) {
+        .col-3 {
+          width: 50%;
+        }
+      }
+      @media (max-width: 600px) {
+        .col-3 {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header><h1>Header</h1></header>
+
+    <div class="row">
+      <div class="col-3">Box 1</div>
+      <div class="col-3">Box 2</div>
+      <div class="col-3">Box 3</div>
+      <div class="col-3">Box 4</div>
+    </div>
+
+    <footer>Footer</footer>
+  </body>
+</html>

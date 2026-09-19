@@ -1,0 +1,56 @@
+<!-- Solution 2: flexbox -->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid View</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* use flex  and felx-wrap : wrap */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      /* each col keep 25 percent default  */
+      .col {
+        flex: 25%;
+        max-width: 25%;
+        padding: 15px;
+        border: 1px solid red;
+      }
+
+      /* override when window get smaller than 800 , then 600px  */
+      @media (max-width: 800px) {
+        .col {
+          flex: 50%;
+          max-width: 50%;
+        }
+      }
+      @media (max-width: 600px) {
+        .col {
+          flex: 100%;
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header><h1>Header</h1></header>
+
+    <!-- row has flex and flex-wrap : wrap  -->
+    <div class="row">
+      <!-- col has flex: 25%; max-width: 25%; override by @media  -->
+      <div class="col">Box 1</div>
+      <div class="col">Box 2</div>
+      <div class="col">Box 3</div>
+      <div class="col">Box 4</div>
+    </div>
+    <footer>Footer</footer>
+  </body>
+</html>

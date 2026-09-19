@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="comp307 test tag" />
+    <meta name="description" content="in class example" />
+
+    <title>Lists</title>
+
+    <!-- set attribute of body with background color to gray  -->
+    <body bgcolor="gray">
+      <!-- use "font" tag enclose some text to enforce font and color -->
+      <!-- notice the actuall font is under "face" attribute  -->
+      <font face="Arial" size="2" color="red">
+        <!-- The ul element represents a list of items, 
+        where the order of the items is not important 
+        ul -> stand for un-order list but still list  -->
+        <ul>
+          <!-- The li element represents a list item -->
+          <li>Hello</li>
+        </ul>
+
+        <!-- test invalid ul (no li child) 
+        only the li tag enclosed get bullet point from ul  
+        -->
+        <ul>
+          plain text
+          <li>hello inside li</li>
+        </ul>
+      </font>
+    </body>
+  </head>
+</html>
+
+<!-- 
+//===============
+summary :
+
+question :
+i see the dot before hello . is that from list li or un-order list ul ?
+The dot comes from <li>, but only because it sits inside <ul>.
+
+    answer : 
+<ul> says the list is unordered, so its items get bullets. It's the container.
+<li> is one item in the list.
+
+so , when use ul , we must place some item inside isntead diretcly text ?
+
+Yes. The only valid direct children of <ul> are <li> elements, 
+    and the text goes inside the <li></li>
+    If you put text directly in <ul>, the browser still shows it, 
+        because browsers are forgiving. But it gets no bullet and the HTML is invalid, -->

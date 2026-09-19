@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+  <body>
+    <p>Block , width 20%</p>
+    <p style="background-color: blue; color: white; width: 20%">blue box one</p>
+    <p style="background-color: blue; color: white; width: 20%">Blue box two</p>
+
+    <p>Inline keyword ~ ignores width</p>
+
+    <p
+      style="background-color: blue; color: white; width: 20%; display: inline"
+    >
+      Blue box one
+    </p>
+
+    <p
+      style="background-color: blue; color: white; width: 20%; display: inline"
+    >
+      Blue box two
+    </p>
+
+    <p>Inline-block</p>
+
+    <p
+      style="
+        background-color: blue;
+        color: white;
+        width: 20%;
+        display: inline-block;
+      "
+    >
+      Blue box one
+    </p>
+
+    <p
+      style="
+        background-color: blue;
+        color: white;
+        width: 20%;
+        display: inline-block;
+      "
+    >
+      Blue box two
+    </p>
+
+    <p>None</p>
+    <p style="background-color: blue; color: white; width: 20%; display: none">
+      Blue box three
+    </p>
+
+    <p>
+      Block: the two boxes are stacked, each 20% wide. Inline: the width is
+      ignored, both boxes sit in one line, and the blue only sits behind the
+      text. Inline-block: they sit side by side and both honour the 20% width.
+      None: the box is completely gone.
+    </p>
+  </body>
+</html>

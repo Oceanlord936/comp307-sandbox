@@ -1,0 +1,61 @@
+<!-- Solution 3: css grid -->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid View</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* we choose display : grid  */
+      .row {
+        display: grid;
+        /* use grid-template-columns: to defin how many cell on each row  */
+
+        /* repeat(4, 1fr) is shorthand for writing 1fr four times, so it's the same as 1fr 1fr 1fr 1fr. */
+        /* 1fr is one fraction of the free space. Four columns with one share each are all equal, so each is 25% of the width. */
+        grid-template-columns: repeat(
+          4,
+          1fr
+        ); /* means "make 4 equal columns". */
+        gap: 10px;
+      }
+      .col {
+        padding: 15px;
+        border: 1px solid red;
+      }
+
+      /* override when window get smaller than 800 , then 600px  */
+
+      /* as we use grid -> when use media use override into grid-template-columns */
+      @media (max-width: 800px) {
+        .row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header><h1>Header</h1></header>
+
+    <!-- row has flex and flex-wrap : wrap  -->
+    <div class="row">
+      <!-- col has flex: 25%; max-width: 25%; override by @media  -->
+      <div class="col">Box 1</div>
+      <div class="col">Box 2</div>
+      <div class="col">Box 3</div>
+      <div class="col">Box 4</div>
+    </div>
+    <footer>Footer</footer>
+  </body>
+</html>

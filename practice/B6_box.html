@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .myDiv {
+        border: 5px solid red;
+        width: 300px;
+        background-color: lightblue;
+        padding: 20px;
+        margin: 10px;
+      }
+
+      .outsetBox {
+        border: 5px outset red;
+        background-color: lightblue;
+        text-align: center;
+        padding: 20px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="myDiv">
+      <h2>This is a heading in a div element</h2>
+      <p>This is some text in a div element.</p>
+    </div>
+
+    <!-- the gap between the two .myDiv boxes is 10px, not 20px. 
+    Vertical margins between neighbours merge into the larger one.
+    text-align: center moves only the text inside, not the box. -->
+
+    <div class="myDiv">
+      <p>This is another div element.</p>
+    </div>
+
+    <div class="outsetBox">
+      <h2>Outset border , centered text</h2>
+      <p>This box has no width set.</p>
+    </div>
+  </body>
+</html>

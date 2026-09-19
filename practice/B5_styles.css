@@ -1,0 +1,18 @@
+p.back {
+  background-color: blue;
+  color: black;
+  padding: 10px;
+}
+span {
+  background-color: red;
+  color: white;
+  padding: 10px;
+}
+.gridlike {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.flexlike {
+  display: flex;
+  justify-content: center;
+}

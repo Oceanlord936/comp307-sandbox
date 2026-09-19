@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      /* the two boxes sit side by side, each half the page. 
+        display: flex on the parent is all it takes.  */
+      .container {
+        display: flex;
+      }
+
+      /* with a comma is grouping: one rule for both. */
+      .left,
+      .right {
+        width: 50%;
+        padding: 20 px;
+      }
+      .left {
+        background: #dfe6e9;
+      }
+      .right {
+        background-color: #b2bec3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left">
+        <h3>Left Column</h3>
+        <p>Content for the left column goes here.</p>
+      </div>
+
+      <div class="right">
+        <h3>Right Column</h3>
+        <p>Content for the right column goes here.</p>
+      </div>
+    </div>
+  </body>
+</html>

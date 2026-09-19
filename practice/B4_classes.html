@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- // B4: class selectors, two classes on one element, grid vs flex -->
+<html>
+  <head>
+    <style>
+      p.back {
+        background-color: blue;
+        color: black;
+        padding: 10px;
+      }
+
+      span {
+        background-color: red;
+        color: white;
+        padding: 10px;
+      }
+      /* display: grid = this element becomes a grid container.
+         Its direct children (the spans) become grid items, placed in rows and columns.
+         grid-template-columns: 1fr 1fr = 2 equal columns (fr = one share of the free space).
+           1fr 1fr 1fr = 3 columns, 1fr 2fr = 2nd column twice as wide, repeat(4, 1fr) = 4 equal columns.
+         Flex = one direction (a row or a column). Grid = rows and columns together. */
+      .gridlike {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+      }
+      .flexlike {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Grid</p>
+    <!-- order of p class="back gridlike" and class="gridlike back" is same -->
+
+    <!-- display: grid makes the <p> the grid container, 
+        and its four <span> elements become the grid items. -->
+
+    <!-- The items fill left to right and start a new row when a row is full. 
+     With 4 spans and 2 columns you get a 2 × 2 block. -->
+    <p class="gridlike back">
+      <span> hello</span>
+      <span>goodbye</span>
+      <span>welcome</span>
+      <span>Salut</span>
+    </p>
+
+    <p>Flex</p>
+    <p class="back flexlike">
+      <!-- display: flex puts the spans in a single row -->
+      <!-- justify-content: center centres the row inside the blue box. -->
+      <span>hello</span>
+      <span>goodbye</span>
+      <span>welcome</span>
+      <span>Salut</span>
+      <span>Salut2</span>
+      <span>Salut3</span>
+      <span>Salut4</span>
+      <span>Salut5</span>
+      <span>Salut6</span>
+      <span>Salut7</span>
+    </p>
+  </body>
+</html>

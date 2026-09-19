@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      /* use grid for display  */
+      .container {
+        display: grid;
+        /* one row one ele col grid   */
+        grid-template-columns: 1fr 1fr;
+      }
+      .left,
+      .right {
+        padding: 20px;
+      }
+      .left {
+        background: #dfe6e9;
+      }
+      .right {
+        background: #b2bec3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left">
+        <h3>Left Column</h3>
+        <p>Content for the left column goes here.</p>
+      </div>
+
+      <div class="right">
+        <h3>Right Column</h3>
+        <p>Content for the right column goes here.</p>
+      </div>
+    </div>
+
+    <p>
+      Observe: two equal columns with no widths needed, and no collapsing
+      parent.
+    </p>
+  </body>
+</html>

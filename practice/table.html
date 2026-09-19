@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>HTML span example</title>
+  </head>
+
+  <body>
+    <table border="1" width="100%">
+      <tr>
+        <!-- taking the table header col 1 2  -->
+         <!-- this row has 2 headther , a colspan="2" big one  -->
+        <th colspan="2" width="60%"> merged columns (has span2)</th>
+        <th width="40">Column 3 </tr>
+
+      </tr>
+
+      
+      <tr> 
+
+        <!-- take 2 row up down  -->
+         <!-- this row has 3 rd , the first is the rowspan="2" bigger one  -->
+        <td rowspan="2" > merged rows</td>
+        <td> row 2 , cell 2 </td>
+        <td> row 2 , cell 3 </td>
+      </tr>
+
+      <!-- the 3rd row only has 2 td cell 
+      as the previous row has rowspan taking the place -->
+      <tr> 
+        <td> row 3 , cell 2</td>
+        <td> row 3 , cell 3</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html>
+  <head>
+    <!-- css goes into style tag  -->
+    <style>
+      h1 {
+        color: #00ff00;
+      }
+      h2 {
+        color: red;
+        text-decoration: underline;
+      }
+      h3 {
+        font-family: times, sans-serif;
+      }
+
+      p {
+        color: rgb(0, 0, 255);
+        font-family: courier;
+      }
+
+      p.sansserief {
+        font-family: sans-serif;
+      }
+
+      body {
+        backgroud-image: url("Good_dog.jpg");
+        background-repeat: no-repeat;
+        background-position: right top;
+        margin-right: 200px;
+      }
+    </style>
+  </head>
+
+  <!-- html in body  -->
+  <body>
+    <h1>Header 1 in lime green</h1>
+    <h2>Header 2 red and underlined</h2>
+    <h3>Header 3 in times</h3>
+    <p>a paragraph in blue , Courier fount-family</p>
+    <p class="sansserief">a blue paraphra in sans-serief</p>
+  </body>
+
+  <p>
+    Observe: The three colour styles all work: a hex code, the name red, and
+    rgb(). The sansserif paragraph is still blue but uses a different font,
+    because p.sansserif overrides only font-family. The picture shows once, at
+    the top right. The margin-right: 200px keeps the text away from the picture.
+  </p>
+
+  <br />
+</html>

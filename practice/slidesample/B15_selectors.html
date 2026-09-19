@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Selectors</title>
+  <style>
+    p { color: green; }                         /* element */
+    p em { color: red; }                        /* descendant (space) */
+    div > em { color: purple; }                 /* child (>) */
+    h4 + p { color: blue; }                     /* adjacent sibling (+) */
+    .highlight { background-color: #ffcccc; }   /* class */
+    #content { border: 2px solid green; }       /* id */
+    h1, h2 { color: darkorange; }               /* grouping (comma) */
+
+    a:link    { color: red; }
+    a:visited { color: blue; }
+    a:hover   { color: green; }
+    a:active  { color: lime; }
+
+    li:nth-child(odd) { background-color: #eeeeee; }
+  </style>
+</head>
+<body>
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+
+  <p>A normal paragraph with <em>emphasis inside p</em>.</p>
+  <div><em>em directly inside a div</em></div>
+  <div><p>a p inside a div, with <em>em inside the p</em></p></div>
+
+  <p class="highlight">A highlighted paragraph.</p>
+  <div id="content">The one element with id="content".</div>
+
+  <h4>A level-4 heading</h4>
+  <p>This paragraph directly follows the h4.</p>
+  <p>This one does not.</p>
+
+  <p><a href="https://www.wikipedia.org">Wikipedia</a> (click it, then come back)</p>
+
+  <ul>
+    <li>one</li>
+    <li>two</li>
+    <li>three</li>
+    <li>four</li>
+  </ul>
+</body>
+</html>

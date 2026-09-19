@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+
+    <!-- flex is the shorthand for three item properties, written in this order: flex: grow shrink basis.
+
+flex-basis: the item's starting size before any growing or shrinking. It's like a width along the row.
+flex-grow: how much of the leftover space the item takes. 0 means it doesn't grow, and bigger numbers take a bigger share.
+flex-shrink: how willing the item is to shrink when there isn't enough room. 1 means it shrinks, and 0 means it won't. -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        mergin: 0;
+        font-family: Arial;
+      }
+      .header {
+        text-align: center;
+        padding: 32px;
+      }
+      /* use flex-wrap: wrap  */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+      /* use flex percentage 25 of parent
+         flex goes on the CHILDREN (items); display: flex on the parent makes them items.
+         Common forms:
+           flex: 25%          = 1 1 25%  starts at 25% wide, can grow and shrink
+           flex: 1            = 1 1 0%   equal share of the space
+           flex: 0 0 25%      = no grow, no shrink, fixed 25%
+         Alone, flex: 25% lets a column GROW into spare space (e.g. a lone item on the last row),
+         so max-width: 25% caps it and keeps it at exactly 25%.
+         Same idea in B12a: flex: 50% + wrap => the 3rd box wraps to row 2 and grows to fill it. */
+      .column {
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+      }
+
+      .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+      }
+
+      @media screen and (max-width: 800px) {
+        /* on less than 800px window and screen 
+        use flex of 50 percent instead for column  */
+        .column {
+          flex: 50%;
+          max-width: 50%;
+        }
+      }
+
+      /* another media : when less than 600px use 100 percent flex  */
+      @media screen and (max-width: 600px) {
+        .column {
+          flex: 100%;
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Responsive Image Gallery</h1>
+      <p>Resize the browser window to see the responsive effect.</p>
+    </div>
+
+    <div class="container">
+      <div class="column">
+        <img
+          src="https://www.w3schools.com/w3images/wedding.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/rocks.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/falls2.jpg"
+          style="width: 100%"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="https://www.w3schools.com/w3images/paris.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/nature.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/mist.jpg"
+          style="width: 100%"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="https://www.w3schools.com/w3images/underwater.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/ocean.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/mountainskies.jpg"
+          style="width: 100%"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="https://www.w3schools.com/w3images/wedding.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/paris.jpg"
+          style="width: 100%"
+        />
+        <img
+          src="https://www.w3schools.com/w3images/ocean.jpg"
+          style="width: 100%"
+        />
+      </div>
+    </div>
+  </body>
+</html>

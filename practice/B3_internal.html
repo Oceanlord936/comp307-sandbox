@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+  <head>
+    <!-- css in style tag  -->
+    <style>
+      /* font-weight:
+      Specifies weight of glyphs in the font, 
+      their degree of blackness or stroke thickness. */
+
+      /* css for list  */
+      li {
+        color: blue;
+        font-weight: bold;
+      }
+
+      /* css for paragraph */
+      p {
+        background-color: yellow;
+        display: block;
+        width: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Applies to an entire group p</p>
+
+    <ul>
+      <li>hello</li>
+      <li>Good bye</li>
+      <!-- use inline css to overwrite color into red , still use bold  -->
+      <li style="color: red">Welcome</li>
+    </ul>
+
+    <br />
+    <br />
+    <p>
+      Observe: Every li is blue and bold, and the p is a 200px yellow block.
+      "Welcome" is red because inline style="XXX" beats the style block. It
+      stays bold, since the inline rule only changed the colou
+    </p>
+  </body>
+</html>

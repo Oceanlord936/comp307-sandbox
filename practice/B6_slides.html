@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      p.soliddouble {
+        border-style: solid double;
+      }
+      p.doublesolid {
+        border-style: double solid;
+      }
+      p.groovedouble {
+        border-style: groove double;
+      }
+      p.three {
+        border-style: solid double groove;
+      }
+
+      p.topmargin {
+        /* 25 percent of container width , not height !  */
+        margin-top: 25%;
+      }
+
+      ol {
+        background: #ff9999;
+        padding: 20px;
+      }
+      ul {
+        background: #3399ff;
+        padding: 20px;
+      }
+
+      /* for list inside order list tag  */
+      ol li {
+        background: #ffe5e5;
+        padding: 5px;
+        margin-left: 35px;
+      }
+
+      /* for list inside unorder list  */
+      ul li {
+        background: #cce5ff;
+        margin: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="soliddouble">Some text</p>
+    <p class="doublesolid">Some text</p>
+    <p class="groovedouble">Some text</p>
+    <p class="three">Some text</p>
+
+    <br />
+    <p>This is a paragraph with no margin specified</p>
+    <p class="topmargin">This is a paragraph with a specified top margin</p>
+
+    <h1>Styling Lists With Colors:</h1>
+
+    <!-- order list , li inside governed by css of ol li -->
+    <ol>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ol>
+
+    <!-- un-order list , li inside goveredn by css of ul li -->
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ul>
+
+    <br />
+
+    <p>
+      Observe: border-style with 2 values: the first is top and bottom, the
+      second is left and right. So solid double has solid top and bottom edges
+      and double left and right edges. double solid is the reverse. With 3
+      values: top, then left and right, then bottom. three has solid on top,
+      double on the sides, and groove on the bottom. margin-top: 25%: the gap is
+      25% of the container's width, not its height. Resize the window and the
+      gap changes. Lists: the ol/ul padding creates the coloured frame.
+      margin-left: 35px on ol li pushes the items right so the numbers show.
+      margin: 5px on ul li puts gaps between the bars.
+    </p>
+  </body>
+</html>

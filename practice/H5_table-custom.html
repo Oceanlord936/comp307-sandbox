@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Custom Sized Table (no CSS)</title>
+  </head>
+
+  <h2>1. table size in pixels</h2>
+
+  <table
+    border="3"
+    width="400px"
+    height="150px"
+    cellpadding="10"
+    cellspaceing="10"
+    bgcolor="#f0f0f0"
+  >
+    <tr>
+      <td width="200" height="50" bgcolor="#fffff">CELL A</td>
+      <td width="200" bgcolor="#fffff">CELL B</td>
+      <td width="200">CELL C</td>
+    </tr>
+
+    <tr>
+      <td height="80" bgcolor="#fffff">Cell D (row height 80)</td>
+      <td bgcolor="#ffffff">Cell E</td>
+    </tr>
+
+    <tr>
+      <td height="80">one cell on this row</td>
+      <td>another cell on this row</td>
+      <td>the third cell on this row</td>
+    </tr>
+  </table>
+
+  <br />
+
+  <h2>2. Sizing columns and rows</h2>
+
+  <table border="3" width="500" cellpadding="6" cellspacing="0">
+    <!-- percentage is relative  1 % 2 % 1 % is actuall 25 % 50 % 25 % -->
+    <tr>
+      <th width="1%" bgcolor="#cce5ff">Wide</th>
+      <th width="2%" bgcolor="#cce5ff">Medium</th>
+      <th width="1%" bgcolor="#cce5ff">Narrow</th>
+    </tr>
+
+    <tr>
+      <td height="60" align="center" valign="middle">centered text</td>
+      <td align="right" valign="top">right + top</td>
+      <td align="left" valign="bottom">left + bottom</td>
+    </tr>
+
+    <tr>
+      <td height="40">row 2</td>
+      <td>row 2</td>
+      <td>row 2</td>
+    </tr>
+  </table>
+
+  <p>
+    Table 1 stays 400px wide even though the three columns each ask for 200px
+    (600 in total). The browser shrinks them together. cellspacing="10" gives
+    the grey gaps between cells and around the outside. cellpadding="10" is the
+    space between each cell's edge and its text. Table 1, row 2 has only 2
+    cells, so its second cell looks stretched or the row looks short. It's just
+    a row with fewer cells. Table 2: the widths are 1% / 2% / 1%, but the
+    columns come out as about 25% / 50% / 25% of 500px. Only the ratio between
+    the numbers matters. Table 2, row 2: "centered text" is centred both ways,
+    "right + top" sits top-right, and "left + bottom" sits bottom-left.
+  </p>
+
+  <br />
+
+  <!-- <h2> is a heading tag.
+    Headings run from <h1> (biggest) down to <h6> (smallest).
+    -->
+  <h2>3. colspan / rowspan with fixed sizes</h2>
+
+  <table border="4" width="450" cellpadding="10" cellspacing="2">
+    <tr>
+      <th colspan="3" bgcolor="d9f2d9">
+        tableHeader spans all 3 columns use colspan="3"
+      </th>
+    </tr>
+
+    <!-- 3 cell at row 2 , first cell span2row use rowspan="2" -->
+    <tr>
+      <td
+        rowspan="2"
+        width="150"
+        align="center"
+        valign="middle"
+        bgcolor="#fff2cc"
+      >
+        Spans 2 rows
+      </td>
+      <td width="150">Row 1, Col 2</td>
+      <td width="150">Row 1, Col 3</td>
+    </tr>
+
+    <!-- only 2 cell td on this row as the previous row do rowspan="2" -->
+    <tr>
+      <td>Row 2, Col 2</td>
+      <td>Row 2, Col 3</td>
+    </tr>
+  </table>
+
+  <br />
+
+  <h2>3b. Same layout WITHOUT rowspan (nested table)</h2>
+
+  <table border="4" width="450" cellpadding="10" cellspacing="2">
+    <tr>
+      <th colspan="2" bgcolor="#d9f2d9">
+        thable header spans both outer columns
+      </th>
+    </tr>
+
+    <tr>
+      <td
+        width="150"
+        height="40"
+        align="center"
+        valign="middle"
+        bgcolor="#fff2cc"
+      >
+        Tall single cell, no rowspan
+      </td>
+
+      <td width="300" valign="top">
+        <!-- another table insde for the 2*2 matrix  -->
+
+        <table border="1" width="100%" cellpading="10" cellspacing="0">
+          <!-- 2 row , each row 2 td cell inside  -->
+          <tr>
+            <td>Row 1, Col 2</td>
+            <td>Row 1, Col 3</td>
+          </tr>
+
+          <tr>
+            <td>Row 2, Col 2</td>
+            <td>Row 2, Col 3</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <br />
+
+  <h2>4. Images inside table cells</h2>
+
+  <table border="2" width="450" cellpadding="10" cellspacing="0">
+    <tr>
+      <td width="100" align="center">
+        <img
+          src="Good_dog.jpg"
+          width="80"
+          height="80"
+          border="1"
+          alt="Dog image"
+        />
+      </td>
+
+      <td valign="middle">
+        FIXED-size icon with a 1px border , in 100px-wide cell
+      </td>
+    </tr>
+
+    <tr>
+      <td width="100" align="center">
+        <!-- hspace and vspace add empty space around an image.
+
+        hspace adds space on the left and right of the image (horizontal).
+        vspace adds space above and below it (vertical). -->
+        <img
+          src="Good_dog.jpg"
+          width="80"
+          height="40"
+          border="0"
+          alt="small dog icon"
+          hspace="4"
+          vspace="4"
+        />
+      </td>
+
+      <td valign="middle">
+        Same image squashed to 80x40 by the attributes. The file itself is
+        untouched.
+      </td>
+    </tr>
+  </table>
+</html>
+
+<!-- Observe:
+
+Table 1 stays 400px wide even though the three columns each ask for 200px (600 in total). The browser shrinks them together.
+cellspacing="10" gives the grey gaps between cells and around the outside. cellpadding="10" is the space between each cell's edge and its text.
+Table 1, row 2 has only 2 cells, so its second cell looks stretched or the row looks short. It's just a row with fewer cells.
+Table 2: the widths are 1% / 2% / 1%, but the columns come out as about 25% / 50% / 25% of 500px. Only the ratio between the numbers matters.
+Table 2, row 2: "centered text" is centred both ways, "right + top" sits top-right, and "left + bottom" sits bottom-left. -->

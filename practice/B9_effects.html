@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Effects</title>
+    <style>
+      /* defaut  */
+      .hover-btn {
+        background-color: #3498db;
+        color: white;
+        padding: 12px 24px;
+        font-size: 16px;
+        border: none;
+        /* make it round corner  */
+        border-radius: 4px;
+        /* for mouse to triger hover 
+        changes the mouse cursor when it's over the element. 
+        It turns the arrow into the pointing-hand cursor you normally see over links.
+        */
+        cursor: pointer;
+        /* for transation animation  */
+        transition:
+          background-color 0.3 ease,
+          transform 0.2s ease;
+      }
+
+      /* Applies while the user designates an element with a pointing device,
+      but does not necessarily activate it.
+      The base rule above = normal look. This rule lists ONLY what changes while hovered;
+      everything else (padding, font-size, corners) stays from the base rule.
+      Write it as .hover-btn:hover (no space before the colon).
+      It is more specific than the base rule, so it wins on hover; write it after by convention.
+      transition goes on the BASE rule so it animates both when the mouse enters and leaves. */
+      .hover-btn:hover {
+        /* change css when hover over with mouse  */
+        background-color: #2980b9;
+        transform: scale(1.05);
+      }
+
+      /* when hover over anchor , change background color  */
+      a:hover {
+        background-color: yellow;
+      }
+
+      /* position: absolute
+         - goes on the element you want to PLACE (each .box), not on the parent.
+         - takes the element out of normal flow: it takes no space, so the button below
+           would slide up under the boxes (that is why there are many <br>).
+         - top/left/right/bottom now work, measured from the nearest positioned ancestor
+           (an ancestor with position other than static). No such ancestor here, so it is
+           measured from the page corner.
+         - Pattern: parent { position: relative; } child { position: absolute; top: 10px; left: 10px; }
+           the parent only marks the reference point; the child says "put me here".
+         - z-index only works on positioned elements; bigger number = on top.
+         - Flex/grid are the opposite: display is set on the PARENT, which lays out its children. */
+      .box {
+        width: 150px;
+        height: 150px;
+        position: absolute; /* needed for z-index to work */
+        color: white;
+        padding: 10px;
+        font-family: sans-serif;
+      }
+
+      .green-box {
+        background-color: green;
+        top: 20px;
+        left: 20px;
+        z-index: 3; /* top z-index*/
+      }
+      .blue-box {
+        background-color: blue;
+        top: 60px;
+        left: 60px;
+        z-index: 2;
+      }
+      .red-box {
+        background-color: red;
+        top: 100px;
+        left: 100px;
+        z-index: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box green-box">Green (z-index: 3)</div>
+      <div class="box red-box">Red (z-index: 1)</div>
+      <div class="box blue-box">Blue (z-index: 2)</div>
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <!-- use hover-btn : hover when hover  -->
+    <button class="hover-btn">Hover Over Me!</button>
+
+    <!-- use a : hover css  -->
+    <p><a href="#">A link to hover</a></p>
+
+    <br />
+
+    <p>
+      .hover-btn { background-color: #3498db; ... transition: ...; } /* normal
+      state */ .hover-btn:hover { background-color: #2980b9; transform:
+      scale(1.05); } /* only while hovered */
+    </p>
+  </body>
+</html>
