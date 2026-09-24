@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="J2_external.js"></script>
+
+    <!-- defer 
+    This Boolean attribute is set to indicate to a browser that the script 
+    is meant to be executed after the document has been parsed,
+     but before firing DOMContentLoaded. -->
+    <script src="J2_timing.js" defer></script>
+
+    <title>j2a</title>
+  </head>
+  <body>
+    <h2>Activate Debugging (External JS)</h2>
+
+    <h2 id="title">Timing test</h2>
+  </body>
+</html>
+
+<!-- How HTML links to it: css vs js 
+ 
+css :
+
+type="text/css" is optional in html5 
+<link rel="stylesheet" href="B5_styles.css" type="text/css" >
+
+js:
+
+<script src="J2_external.js"></script>
+
+
+do I need it ??
+<script type="module" src="x.js"> this is mandatory
+    This type changes how the script behaves (you'll see it in J2c). 
+
+
+--------------
+
+Right: without defer you get null, and with defer you get the element.
+
+Without defer
+The browser reads the file from top to bottom and stops at each script:
+
+1. read <head>
+2. reach <script src="J2_timing.js">  → STOP reading HTML
+3. download J2_timing.js, run it       → getElementById("title") → body not read yet → null
+4. continue reading → <body> → <h2 id="title"> is created now (too late)
+
+
+    With defer
+defer tells the browser: download this script now, 
+but wait to run it until all the HTML has been read.
+
+1. read <head>
+2. reach <script src="..." defer>   → start downloading, but DON'T run; keep reading
+3. read <body> → <h2 id="title"> is created
+4. reach </html> → HTML finished
+5. NOW run the deferred script      → getElementById("title") → finds it ✅
+
+
+-->

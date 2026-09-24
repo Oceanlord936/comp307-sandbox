@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html>
+  <body>
+    <p>"Click the button to display the date."</p>
+
+    <script>
+      // functon for the section button
+      const secondTime = () => {
+        document.getElementById("demo").innerHTML = Date();
+      };
+    </script>
+
+    <div style="margin: 10px" id="demo"></div>
+
+    <!-- The inline one uses 'demo' in single quotes 
+     inside the double-quoted attribute -->
+    <button onclick="document.getElementById('demo').innerHTML = Date()">
+      The time is?
+    </button>
+
+    <button onclick="secondTime()">
+      the time is ? ( use script not inline)
+    </button>
+  </body>
+</html>
+
+<!-- place script above still work
+ 
+Yes, that's the expected result, and it confirms the rule. 
+The script defines the function during loading,
+but the function doesn't run until the click. 
+By the time you click, the whole page exists, 
+so getElementById('demo') finds it.
+
+-->

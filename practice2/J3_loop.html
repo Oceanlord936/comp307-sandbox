@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html>
+  <body>
+    <h2>"JavaScript Do/While Loop"</h2>
+
+    <p id="demo"></p>
+
+    <script>
+      function toCelsiusFive(f) {
+        let text = "";
+        let i = 0;
+        let value = 0.0;
+
+        do {
+          value = (5 / 9) * (f + i - 32);
+          //To display a clean number, round it when you show it
+          text += "<br /> Temp is " + value.toFixed(2); // 25.56
+
+          i++;
+        } while (i < 10);
+
+        return text;
+      }
+
+      document.getElementById("demo").innerHTML = toCelsiusFive(77);
+    </script>
+  </body>
+</html>
+
+<!-- why 25.555555555555557
+ 
+1. The exact answer never ends.
+For i = 1: (5/9) * (78 − 32) = (5/9) * 46 = 230/9 = 25.5555555…, 
+with 5s forever. No computer can store infinitely many digits.
+
+
+2. JavaScript stores every number as a 64-bit floating-point value (a double).
+There's no separate int or float type. Every number is a double, 
+the same as Java's double. 
+A double holds about 16–17 significant digits, 
+so the value is cut off and rounded at the last digit:
+
+Doubles are stored in binary, not decimal, so the rounding error doesn't always land as a clean 5 or 
+
+-->

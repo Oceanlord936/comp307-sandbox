@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html>
+  <body>
+    <p id="p1">his is a text</p>
+
+    <!-- inline version  -->
+    <input
+      type="button"
+      value="Hide text"
+      onclick="document.getElementById('p1').style.visibility = 'hidden'"
+    />
+    <input type="button" value="hide text" onclick="hideText()" />
+    <input type="button" value="show text" onclick="showText()" />
+
+    <script>
+      const hideText = () => {
+        // to change visibility -> use style , to handle css
+        document.getElementById("p1").style.visibility = "hidden";
+      };
+
+      const showText = () => {
+        // to change visibility -> use style , to handle css
+        document.getElementById("p1").style.visibility = "visible";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>review2</title>
+  </head>
+
+  <body>
+    <h2>My First Web Page</h2>
+
+    <p>Never call document.write after the document has finished loading.</p>
+
+    <div
+      style="
+        align-content: center;
+        background-color: blue;
+        color: white;
+        width: 150px;
+      "
+    >
+      <script>
+        document.write(5 + 6);
+      </script>
+    </div>
+
+    <!-- after button click  -->
+    <button onclick="document.write(5 + 6)">Try it</button>
+
+    <!-- after a timer  -->
+
+    <br />
+
+    <p>
+      The page looks normal for 3 seconds, then it's replaced by 11. setTimeout
+      comes back in J7.
+    </p>
+    <!-- <script>
+      setTimeout(function () {
+        document.write(5 + 6);
+      }, 3000);
+    </script> -->
+
+    <!-- on the load event  -->
+
+    <!-- <script>
+      window.onload = function () {
+        document.write(5 + 6);
+      };
+    </script> -->
+
+    <!-- When it runs	What happens
+    While loading, e.g. a <script> in the body (J1a)	
+      The document is still open, so the text is inserted at the spot where the script sits. 
+      The rest of the page is kept.
+    After loading, e.g. from a click (J1b), 
+    a timer or onload	The document is closed. 
+    document.write automatically calls document.open(),
+     which clears the whole page, and then writes into the empty page. 
+     You end up with only 11. -->
+  </body>
+</html>

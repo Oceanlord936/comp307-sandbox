@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html>
+  <head> </head>
+
+  <body>
+    <!-- empty slot  -->
+    <p id="demo"></p>
+
+    <h2>
+      A <b> JavaScript program</b> is a list of <b>statements </b> to be
+      executed by a computer.
+    </h2>
+
+    <script>
+      // fill that empty p
+      // first get element by id . then user innerHtml
+      // innerHtml means the inside text of that <p>
+      let x, y, z;
+      x = 5;
+      y = 6;
+      z = x + y;
+
+      const w = 10;
+      //w = 20; // re-assign a const-> Uncaught TypeError: Assignment to const
+
+      //   Something important is hidden here: when a line throws an error,
+      // the rest of the script stops. Line 25 (innerHTML = z) never runs.
+      document.getElementById("demo").innerHTML = "The value of z is " + z;
+    </script>
+  </body>
+</html>
+
+<!-- 
+The idea: in J1, document.write put text wherever the script happened to be, 
+and it wiped the page after loading. 
+The better way is to put an empty element with an id in the page. 
+-->
