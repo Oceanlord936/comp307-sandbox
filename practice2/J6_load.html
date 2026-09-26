@@ -1,0 +1,77 @@
+<!doctype html>
+
+<html>
+  <!-- The idea -->
+  <!-- Remember from J2: a script only sees the HTML above it. 
+    If a script in <head> calls getElementById, 
+    the element doesn't exist yet and you get null. 
+    
+    The load event fires on window once the whole page has finished loading
+    
+    all the HTML, plus images and CSS. 
+    Any code inside a load listener can safely reach every element,
+     wherever the <script> is placed.
+
+        window.addEventListener("load", init);   // listener style (J5a)
+        
+        window.onload = init;                    // property style (you fixed windows.onload in J2)
+
+        <body onload="init()">
+
+  -->
+
+  <!-- My understanding:
+
+    1. addEventListener("load", init) does NOT run init. It only registers it.
+       The browser keeps reading the HTML, then fires "load" when the whole
+       page is ready and calls every registered function -> "loaded!".
+       If nothing registers init, nobody calls it -> stays "waiting...".
+       Defining a function never runs it.
+
+    2. A direct getElementById("msg") in <head> gives null: the <p id="msg">
+       has not been read yet. null.innerHTML -> TypeError, and the error stops
+       the rest of that <script>.
+       - direct line BEFORE addEventListener -> listeners never registered
+       - direct line AFTER addEventListener  -> listeners already registered,
+         load still fires, init still works
+       Fixes: script at end of <body>, or a load listener, or defer.
+
+    3. <body onload="..."> is the same as window.onload = ... : ONE slot,
+       the last one set replaces the other. addEventListener adds to a list,
+       so several load listeners all run (that's why init ran twice when I had
+       both the addEventListener line and the body attribute).
+
+    4. Why () in the attribute but not in addEventListener:
+       the attribute text is CODE the browser wraps in a function:
+         <body onload="init()">  ~  window.onload = function (event) { init(); };
+       it runs when load fires (not when the tag is read), and inside that
+       wrapper init() is what actually calls init. onload="init" would only
+       mention it and do nothing (like e.preventDefault; without ()).
+         addEventListener("load", init)  -> give the function      -> no ()
+         window.onload = init            -> give the function      -> no ()
+         <body onload="init()">          -> give code to run later -> ()
+       The wrapper's parameter is named event, which is why
+       onkeydown="handleKey(event)" worked in J4c.
+  -->
+
+  <head>
+    <script>
+      //window.addEventListener("load", init);
+
+      document.getElementById("msg").innerHTML = "direct!";
+
+      window.addEventListener("load", showlog);
+
+      function init() {
+        document.getElementById("msg").innerHTML = "loaded!";
+      }
+
+      function showlog() {
+        console.log("page loaded");
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <p id="msg" onload="init()">waiting...</p>
+  </body>
+</html>

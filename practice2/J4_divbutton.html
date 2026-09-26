@@ -1,5 +1,42 @@
 <!doctype html>
 
 <html>
-  <body></body>
+  <body>
+    <!-- use div as a button  -->
+
+    <h2>use the div as a button</h2>
+
+    <div
+      style="
+        cursor: pointer;
+        border-radius: 10%;
+        border: 2px solid black;
+        width: 170px;
+      "
+      id="msg"
+      tabindex="0"
+      role="button"
+      onclick="showP()"
+      onkeydown="handleKey(event)"
+    >
+      click me !
+    </div>
+
+    <p id="demo" style="visibility: hidden">here is the paragraph to show</p>
+
+    <script>
+      function handleKey(event) {
+        // pass the event and check , when it is enter or space press
+        if (event.key === "Enter" || event.key === " ") {
+          // do something
+
+          showP();
+        }
+      }
+
+      function showP() {
+        document.getElementById("demo").style.visibility = "visible";
+      }
+    </script>
+  </body>
 </html>

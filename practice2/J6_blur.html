@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+  <!-- The idea -->
+  <!-- blur is the opposite of focus: 
+   it happens when an element loses focus. 
+   The user may have clicked elsewhere, 
+   pressed Tab to move on, 
+   or JavaScript may have called .blur(). 
+   
+   el.blur() is a method: it removes focus from el.
+
+   addEventListener("blur", f) is an event: it reacts when el loses focus.
+   -->
+  <body>
+    <input id="email" />
+    <p id="warn"></p>
+
+    <input />
+
+    <button onclick="buttonC()">Done typing</button>
+
+    <script>
+      let email = document.getElementById("email");
+      let warn = document.getElementById("warn");
+
+      email.addEventListener("blur", checkInput);
+      email.addEventListener("focus", clearWarn);
+
+      function checkInput() {
+        let content = email.value;
+
+        if (!content.includes("@")) {
+          warn.innerHTML = "Invalid email";
+          email.style.border = "2px solid red";
+        } else {
+          warn.innerHTML = "";
+          email.style.border = "";
+        }
+      }
+
+      function clearWarn() {
+        warn.innerHTML = "";
+        email.style.border = "";
+      }
+
+      // when click button , remove focus from the input
+      // this is not realy needed as when click button
+      // alreaudy out of first input focus
+      function buttonC() {
+        document.getElementById("email").blur();
+      }
+    </script>
+  </body>
+</html>

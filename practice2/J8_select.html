@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html>
+  <!-- The idea -->
+  <!-- A <select> is a dropdown. 
+    Each <option> has a value, 
+        which is what your code reads, 
+        and text, which is what the user sees: 
+        
+<select id="city">
+  <option value="mtl">Montreal</option>
+  <option value="tor">Toronto</option>
+</select>
+
+let sel = document.getElementById("city");
+sel.value                          // "mtl": value of the chosen option
+sel.selectedIndex                  // 0: position of the chosen option
+sel.options[sel.selectedIndex].text // "Montreal": the visible text
+
+        .value works the same way as on <input> in J6c. It's always a string.
+If an <option> has no value attribute, .value falls back to its text.
+
+        -->
+
+  <!-- My understanding:
+
+    1. value vs text: value is for the code, text is what the user sees.
+       <option value="mtl">montreal</option> -> .value "mtl", text "montreal"
+       <option>Paris</option> (no value)      -> .value falls back to "Paris"
+       Removing value from ALL options makes value = text everywhere,
+       so mix them to see the difference.
+
+    2. city[i].text is a shortcut for city.options[i].text
+       (the slides use the .options[...] form, know both).
+
+    3. The "change" event fires on the <select> when the user picks a
+       DIFFERENT option -> calls show() by itself, no button needed.
+       Re-picking the option that's already chosen is not a change,
+       so nothing fires (that's why the Show button still helps for the
+       starting option).
+       document.getElementById("city").addEventListener("change", show);
+       -> at the top level of the script, so it's registered at load.
+
+    4. "change" vs "input": on a text field, input fires on every
+       keystroke; change fires only when you leave the field after editing.
+  -->
+  <body>
+    <select id="city">
+      <option value="mtl">montreal</option>
+      <option value="tyo">tokyo</option>
+      <option>Paris</option>
+    </select>
+
+    <button onclick="show()">Show</button>
+
+    <p id="out"></p>
+
+    <script>
+      document.getElementById("city").addEventListener("change", show);
+      let p;
+      let city;
+
+      let selectedCity;
+      let cityIndex;
+      let selectedText;
+
+      function update() {
+        p = document.getElementById("out");
+        city = document.getElementById("city");
+
+        selectedCity = city.value;
+        cityIndex = city.selectedIndex;
+        selectedText = city[cityIndex].text;
+      }
+
+      function show() {
+        update();
+        p.innerHTML = selectedCity + " " + cityIndex + " " + selectedText;
+      }
+    </script>
+  </body>
+</html>

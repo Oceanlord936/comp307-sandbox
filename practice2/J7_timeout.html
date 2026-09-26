@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html>
+  <!-- The idea -->
+  <!-- setTimeout runs a function once, after a delay:
+   
+  setTimeout(sayHi, 2000);   // call sayHi after 2000 ms = 2 s
+
+  The first argument is the function to run, without (), 
+  the same rule as addEventListener
+
+  It doesn't pause the script. setTimeout just schedules the call, 
+  and the next line runs straight away. 
+  Compare that with alert from J1, which blocks everything.
+
+
+  -->
+
+  <body>
+    <button id="start" onclick="waitingSet()">Start</button>
+    <p id="out"></p>
+
+    <script>
+      let p = document.getElementById("out");
+
+      function waitingSet() {
+        p.innerHTML = "Waiting...";
+        console.log("A");
+        setTimeout(delayFun, 3000);
+        console.log("C");
+      }
+
+      function delayFun() {
+        console.log("B");
+        p.innerHTML = "Time's up!";
+      }
+    </script>
+  </body>
+</html>

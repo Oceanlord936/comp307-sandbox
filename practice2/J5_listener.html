@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html>
+  <body>
+    <!-- So far you've written handlers inside the HTML, 
+     like onclick="showP()". 
+     addEventListener attaches the handler from JavaScript instead,
+      so the HTML has no on... attributes at all: 
+      
+      element.addEventListener("click", functionName);
+
+      The first argument is the event name as a string, without "on":
+       "click", not "onclick".
+
+       The second argument is the function itself, without (). 
+       With (), the function would run 
+       immediately and pass in its result instead of the function.
+      -->
+
+    <p id="out"></p>
+    <button id="btn">click me !</button>
+
+    <script>
+      // fetch the button
+      let buttonItem = document.getElementById("btn");
+
+      //no () to prevent run when load , pass it in for addEventListern instead
+      buttonItem.addEventListener("click", clicked);
+
+      // second event listerner to same button
+      buttonItem.addEventListener("click", consoleClickShow);
+
+      function clicked() {
+        document.getElementById("out").innerHTML = "Clicked!";
+      }
+
+      function consoleClickShow() {
+        console.log("second listener");
+      }
+    </script>
+
+    <br />
+    <br />
+
+    <p>
+      my oberservation: i have not yet test the do wrong () on purpose . but i
+      tried to use non "click" , seems like the click itself is not random name
+      just like onclick it still are keywords You've got it. The event name has
+      to be one the browser actually fires. It's a fixed list, the same one the
+      on... attributes use, just without the "on":
+    </p>
+
+    <table style="border-collapse: collapse; font-family: monospace">
+      <tr style="background-color: lightgray">
+        <td style="border: 1px solid black; padding: 4px 10px">Attribute</td>
+        <td style="border: 1px solid black; padding: 4px 10px">
+          addEventListener name
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 4px 10px">onclick</td>
+        <td style="border: 1px solid black; padding: 4px 10px">"click"</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 4px 10px">onkeydown</td>
+        <td style="border: 1px solid black; padding: 4px 10px">"keydown"</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 4px 10px">onmouseover</td>
+        <td style="border: 1px solid black; padding: 4px 10px">"mouseover"</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 4px 10px">onload</td>
+        <td style="border: 1px solid black; padding: 4px 10px">"load"</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 4px 10px">
+          onfocus / onblur
+        </td>
+        <td style="border: 1px solid black; padding: 4px 10px">
+          "focus" / "blur"
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 4px 10px">onchange</td>
+        <td style="border: 1px solid black; padding: 4px 10px">"change"</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 4px 10px">oninput</td>
+        <td style="border: 1px solid black; padding: 4px 10px">"input"</td>
+      </tr>
+    </table>
+
+    <p>
+      Typo trap: addEventListener("clic", f) gives no error. The browser never
+      fires a "clic" event, so the listener silently never runs.
+    </p>
+  </body>
+</html>

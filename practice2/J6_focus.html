@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+  <!-- The idea -->
+  <!-- In J4c you learned that focus decides 
+   which element receives keyboard input.
+    Until now the user moved focus with Tab or a click. 
+    JavaScript can move it too: 
+    
+    document.getElementById("name").focus();
+
+    Calling .focus() puts the text cursor into that input,
+    as if the user had clicked it. 
+     
+    It's often used on page load so a form is ready to type into straight away. 
+    Search pages do this.
+
+
+    There's also a focus event, 
+    which fires when an element receives focus. Watch the difference:
+
+    el.focus() is a method: you make focus happen.
+
+    el.addEventListener("focus", f) is an event: 
+    you react when focus happens.
+    -->
+
+  <body>
+    <br />
+    <input id="first" />
+    <input id="second" />
+    <button id="jump" onclick="jumptoSec()">Go to second</button>
+
+    <script>
+      window.addEventListener("load", placeCursor);
+
+      let firstEle = document.getElementById("first");
+
+      let secondEle = document.getElementById("second");
+
+      secondEle.addEventListener("focus", changeColor);
+
+      function placeCursor() {
+        firstEle.focus(); // when call , place focuse on that input
+      }
+
+      function jumptoSec() {
+        secondEle.focus();
+      }
+
+      function changeColor() {
+        secondEle.style.backgroundColor = "lightyellow";
+      }
+    </script>
+  </body>
+</html>

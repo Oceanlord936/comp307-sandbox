@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html>
+  <!-- The idea -->
+  <!-- A <form> gives you all its fields as a collection, 
+    so you can loop over them instead of calling getElementById 
+    for each one: 
+    
+let f = document.getElementById("myForm");
+
+f.elements          // every field inside the form (inputs, selects, buttons…)
+f.elements.length   // how many there are
+f.elements[i]       // the i-th field, like an array
+
+.name: its name attribute
+.type: "text", "checkbox", "select-one", "button", and so on
+.value: what's in it. For a checkbox, use .checked, 
+which is true or false. A checkbox's .value is always "on",
+ whether it's ticked or not.
+
+    -->
+
+  <body>
+    <form id="myForm">
+      user :
+      <input name="user" />
+      email :
+      <input name="email" />
+      subscribe :
+      <input type="checkbox" name="subscribe" />
+      city:
+      <select name="city">
+        <option value="mtl">Montreal</option>
+        <option value="tor">Toronto</option>
+      </select>
+
+      <button type="button" onclick="show()">Read form</button>
+    </form>
+
+    <p id="out"></p>
+
+    <script>
+      let p = document.getElementById("out");
+      let f = document.getElementById("myForm");
+
+      function show() {
+        let innerText = "";
+
+        for (let i = 0; i < f.elements.length; i++) {
+          // skip the button: it's not data
+          if (f.elements[i].type === "button") {
+            continue;
+          }
+          // br here need quote ""
+          // input of our filefPlusContent() is the elemnt
+          // use f.element[index]
+          innerText += filefPlusContent(f.elements[i]) + "<br />";
+        }
+
+        p.innerHTML = innerText;
+      }
+
+      function filefPlusContent(item) {
+        // the field name is "item.name"
+        if (item.type === "checkbox") {
+          // .value is always "on" for a checkbox; .checked is true/false
+          return item.name + " " + item.checked;
+        } else {
+          return item.name + " " + item.value;
+        }
+      }
+    </script>
+  </body>
+</html>

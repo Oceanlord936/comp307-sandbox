@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html>
+  <!-- setInterval is like setTimeout, but it repeats. 
+ It calls the function every N milliseconds, forever, 
+ until you stop it: 
+ 
+    let timerId = setInterval(tick, 1000);   // call tick every 1 s
+    
+    clearInterval(timerId);                  // stop it
+
+    setInterval returns an ID number.
+     You must save it in a variable, 
+     because that's the only way to stop the timer later.
+
+ -->
+  <body>
+    <p id="count">0</p>
+
+    <button id="start" onclick="startTimer()">start</button>
+    <button id="stop" onclick="stopTimer()">stop</button>
+
+    <script>
+      let number = 0;
+      let timerid;
+      let p = document.getElementById("count");
+
+      function startTimer() {
+        // only run setInterval if we not already have the timerid
+        if (!timerid) {
+          timerid = setInterval(tick, 1000);
+        }
+      }
+
+      function tick() {
+        number++;
+        p.innerHTML = number;
+      }
+
+      function stopTimer() {
+        clearInterval(timerid);
+        timerid = null; // reset to null the varible as well
+      }
+    </script>
+  </body>
+</html>
