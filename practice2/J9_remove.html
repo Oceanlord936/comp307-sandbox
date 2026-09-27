@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+  <!-- The idea: there are two ways to take a node off the page:
+ 
+parent.removeChild(child);   // the slide's way: called on the PARENT
+child.remove();              // newer: the node removes ITSELF, no argument
+
+-->
+  <body>
+    <ul id="myList">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+
+    <button onclick="rFirst()">remove first</button>
+    <button onclick="rLast()">remove first</button>
+
+    <script>
+      function rFirst() {
+        let myList = document.getElementById("myList");
+        let first = myList.firstElementChild;
+
+        // guard
+        if (first) {
+          //myList.removeChild(first);
+          let gone = myList.removeChild(first);
+          myList.appendChild(gone);
+        }
+      }
+
+      function rLast() {
+        let myList = document.getElementById("myList");
+        let last = myList.lastElementChild;
+
+        // guard
+        if (last) {
+          last.remove();
+        }
+      }
+    </script>
+  </body>
+</html>

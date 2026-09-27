@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <!-- Hover dropdown: CSS only, no JS
+
+    Pattern:  .parent:hover .child { display: block; }
+              = WHEN the parent is hovered, show the child INSIDE it
+              (space = descendant; the child must be inside the parent in HTML)
+
+    Element                 CSS                        Why
+    wrapper  .dropdown      position: relative;        menu is placed from here (right under the button)
+                            display: inline-block;     hover area = button width only
+                                                       (block = whole row opens the menu)
+    menu  .dropdown-content display: none;             hidden by default
+                            position: absolute;        out of the flow: floats OVER the text,
+                                                       doesn't push it down
+                            z-index: 1;                drawn on top (only works on positioned elements)
+    links                   display: block;            one per line (a is inline by default)
+
+    absolute child + relative parent = child is placed relative to that parent
+
+    Traps:
+      - .dropbtn:hover .dropdown-content never opens: the menu is not INSIDE the button
+      - hover the WRAPPER, not the button, so moving the mouse down onto
+        the links keeps the menu open
+      - invalid values (position: 50, display: ___) are silently dropped
+      - HTML class names must match the CSS selectors exactly
+  -->
+  <head>
+    <style>
+      /* the green button */
+      .dropbtn {
+        background-color: #04aa6d; /* #04AA6D */
+        color: white; /* white */
+        padding: 16px;
+        font-size: 16px;
+        border: 0px; /* remove default button border */
+      }
+
+      /* wrapper = anchor for the menu */
+      .dropdown {
+        position: relative; /* relative: children with absolute position are placed from here */
+        display: block; /* inline-block: only as wide as the button */
+      }
+
+      /* the menu: hidden, floating */
+      .dropdown-content {
+        display: none; /* hidden at start */
+        position: absolute; /* absolute: out of normal flow, floats over the text */
+        background-color: #f1f1f1;
+        min-width: 160px;
+        z-index: 1; /* on top of the text below */
+      }
+
+      /* each link: one per line */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none; /* no underline */
+        display: block; /* block: stack them */
+      }
+
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      /* THE TRICK: hovering the wrapper shows the menu inside it
+      so hovering anywhere on that row opens the menu */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      /* button gets darker while the wrapper is hovered */
+      .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Hoverable Dropdown</h2>
+
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+
+    <p>Some text below the dropdown. The menu should float OVER this.</p>
+  </body>
+</html>

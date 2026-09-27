@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html>
+  <!-- The idea: parent.replaceChild(newNode, oldNode). 
+     Like insertBefore, you call it on the parent, 
+     and the new node comes first.
+     
+     The old node is taken off the page.
+
+
+     <li>Coffee</li>          the <li> is the parent here
+    └─ "Coffee"          its text node is the child being replaced
+
+
+let text = document.createTextNode("Water");
+let item = list.firstElementChild;            // <li>Coffee</li>
+
+use "Water" node to replace coffe text node 
+item.replaceChild(text, item.firstChild);     // its text "Coffee" → "Water"
+
+
+     -->
+
+  <ul id="myList">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ul>
+
+  <button onclick="replaceFirst()">click me</button>
+  <button onclick="another()">click me 2</button>
+
+  <script>
+    function replaceFirst() {
+      // change first item test to water
+      let waterText = document.createTextNode("water");
+
+      let myList = document.getElementById("myList");
+      let first = myList.firstElementChild;
+
+      // need to use parent to call  .replaceChild(replace , child )
+      // praent here is li , child is text node
+      first.replaceChild(waterText, first.firstChild);
+    }
+
+    function another() {
+      let li = document.createElement("li");
+      li.appendChild(document.createTextNode("Juice"));
+      myList.replaceChild(li, myList.firstElementChild);
+    }
+  </script>
+</html>

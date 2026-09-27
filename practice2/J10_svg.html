@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+  <!-- The idea: SVG describes the shapes as tags in the HTML, 
+     and the browser draws them. There's no JS and no context: -->
+
+  <!-- Canvas (J10a-b) vs SVG
+
+                        Canvas                        SVG
+    How you draw        JS calls on ctx               HTML tags (<circle>, <rect>)
+    What's left after   pixels only                   real elements in the DOM
+    Change one shape    redraw everything             getElementById + setAttribute
+    Events on a shape   no                            yes (onclick on a <circle>)
+    Zoomed in           pixelated                     stays sharp (vector)
+    Good for            games, lots of fast drawing   logos, icons, simple graphics
+
+    Same circle both ways:
+      Canvas: ctx.beginPath(); ctx.arc(50, 50, 40, 0, 2 * Math.PI); ctx.stroke();
+      SVG:    <circle cx="50" cy="50" r="40" stroke="green" fill="yellow" />
+
+    Same in both:
+      - (0,0) is top-left, y goes DOWN
+      - anything outside width/height is cut off, no error
+      - set width/height as attributes
+
+    Traps:
+      - misspelled attribute (cs, yx) is ignored silently -> cx/cy default 0
+      - cx/cy is the CENTER: center on a corner shows only 1/4 of the circle
+      - cx/cy move the shape INSIDE the svg; CSS (margin) moves the whole svg
+  -->
+  <body>
+    <svg width="300" height="150" border="2">
+      <!-- set center of x , center of y  -->
+      <circle
+        id="dot"
+        cx="50"
+        cy="50"
+        r="40"
+        stroke="green"
+        stroke-width="4"
+        fill="yellow"
+      />
+
+      <!-- 2. rectangle: x,y = its TOP-LEFT corner (not the center like a circle) -->
+      <rect x="150" y="30" width="100" height="80" fill="blue" />
+    </svg>
+
+    <button onclick="makeRed()">Make red</button>
+
+    <script>
+      function makeRed() {
+        let dot = document.getElementById("dot");
+        dot.setAttribute("fill", "red"); // same as editing fill="yellow" → fill="red"
+      }
+    </script>
+  </body>
+</html>

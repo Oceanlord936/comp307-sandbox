@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html>
+  <head>
+    <style>
+      .accordion {
+        background-color: #eee; /* light grey bar */
+        color: #444;
+        cursor: pointer; /* hand cursor, so it looks clickable */
+        padding: 18px;
+        width: 100%; /* full-width bar */
+        border: none; /* remove the default button look */
+        text-align: left; /* buttons center text by default */
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s; /* smooth color change */
+      }
+
+      /* where is .active work ? i do not see class="active"
+      Right, it isn't in your HTML file. JS adds it while the page is running, when you click:
+
+      this.classList.toggle("active");
+
+
+      live page, after 1st click:    <button class="accordion active">Section 1</button>
+
+      */
+      .active,
+      .accordion:hover {
+        background-color: #ccc; /* darker: while hovered OR while open */
+      }
+
+      .panel {
+        padding: 0 18px;
+        display: none; /* hidden at start */
+        background-color: white;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <!-- The idea: a list of buttons, 
+     each with a hidden panel right after it. 
+     Clicking a button opens or closes its own panel. 
+     This combines three things you already know: -->
+  <body>
+    <h2>Accordion</h2>
+
+    <button class="accordion">Section 1</button>
+
+    <div class="panel">
+      <p>Text for section 1.</p>
+    </div>
+
+    <button class="accordion">Section 2</button>
+    <div class="panel">
+      <p>Text for section 2.</p>
+    </div>
+
+    <button class="accordion">Section 3</button>
+    <div class="panel">
+      <p>Text for section 3.</p>
+    </div>
+
+    <script>
+      let divList = document.getElementsByClassName("accordion");
+
+      // add event listener for button
+      for (let i = 0; i < divList.length; i++) {
+        divList[i].addEventListener("click", clickTodo);
+      }
+
+      function clickTodo() {
+        //classList is the field
+        //.toggle("active") is a method that changes that state
+        this.classList.toggle("active"); // open → add "active" (stays dark); close → remove it
+
+        // for cur div , expend
+        // get the p inside , wich is nextElementSibling
+        let inner = this.nextElementSibling; // the <div class="panel"> after THIS button
+
+        if (inner.style.display === "block") {
+          //opened , want to close it
+          inner.style.display = "none"; // close
+        } else {
+          inner.style.display = "block"; // open
+        }
+      }
+    </script>
+  </body>
+</html>

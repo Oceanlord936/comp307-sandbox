@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+  <!-- The idea: there's no separate "move" method. If you appendChild or
+    insertBefore a node that is already on the page, the browser takes it out of
+    its old place and puts it in the new one -->
+  <body>
+    <ul id="myList1">
+      <li>coffee</li>
+      <li>tea</li>
+    </ul>
+
+    <ul id="myList2">
+      <li>water</li>
+      <li>milk</li>
+    </ul>
+
+    <button onclick="moveItem()">move !</button>
+
+    <script>
+      function moveItem() {
+        let mylist1 = document.getElementById("myList1");
+        let mylist2 = document.getElementById("myList2");
+
+        let last = mylist2.lastElementChild;
+        let first = mylist1.firstElementChild;
+
+        //mylist2.removeChild(last); we do not need this as insertBfore
+        // take a node insert before another node
+
+        // guard
+        if (!last) {
+          return; // nothing left to move
+        }
+        //insertBefore needs two arguments: (nodeToInsert, referenceNode).
+        mylist1.insertBefore(last, first);
+      }
+    </script>
+  </body>
+</html>

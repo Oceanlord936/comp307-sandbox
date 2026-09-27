@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html>
+  <body>
+    <!-- 1. the list: Coffee, Tea (each <li> on its own line) -->
+    <ul id="myList">
+      <li>Coffee</li>
+      <li>Tea</li>
+    </ul>
+
+    <!-- 2. two buttons, same function, different argument -->
+    <button onclick="addItem('end')">Add to end</button>
+    <button onclick="addItem('start')">Add to top</button>
+
+    <script>
+      function addItem(where) {
+        let li = document.createElement("li");
+
+        let text = document.createTextNode("Water");
+
+        // use appendChild() to insert textNode into li
+        //
+        li.appendChild(text); // when not append it is empty li
+
+        // find the parent
+        // then inerstBefore( li , the_first_li) or after the list
+        let list = document.getElementById("myList");
+
+        if (where === "end") {
+          list.appendChild(li);
+        } else {
+          list.insertBefore(li, list.childNodes[0]);
+        }
+      }
+    </script>
+  </body>
+</html>

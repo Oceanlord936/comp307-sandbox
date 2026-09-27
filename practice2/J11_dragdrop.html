@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <!-- Drag & drop: built-ins used here, with correct use
+
+    HTML attributes
+      draggable="true"                       on the element you drag (img is ok, div needs it)
+      ondragstart="dragstartHandler(event)"  on the DRAGGED element
+      ondragover="dragoverHandler(event)"    on the DROP box
+      ondrop="dropHandler(event)"            on the DROP box
+        -> `event` is a special name in inline attributes = the event object (becomes ev)
+
+    ev.target
+      the element the event happened ON
+      in dragstart -> the dragged element (dog)
+      in drop      -> the element dropped ONTO (box)
+
+    ev.dataTransfer.setData(key, value)      2 args, both strings
+      ev.dataTransfer.setData("text", ev.target.id);
+      store value under a label; carries it from dragstart to drop
+
+    ev.dataTransfer.getData(key)             1 arg: the SAME label used in setData
+      let id = ev.dataTransfer.getData("text");     -> "dog"
+      NOT getData(ev.target.id): that asks for label "box" -> ""
+
+    ev.preventDefault()                      no args; the event has no .drop() method
+      in dragover: allow dropping (default = no drop, cursor 🚫, drop never fires)
+      in drop:     stop the browser opening the image as a page
+
+    parent.appendChild(child)                call on the PARENT, pass the element to add
+      ev.target.appendChild(document.getElementById(id));
+      child already on the page -> it MOVES (J9b)
+      appendChild(box) on the box itself -> HierarchyRequestError
+
+    document.getElementById(id)              string id -> element (null if not found)
+      getData gives a STRING, so convert it to the element before appendChild
+
+    Mistakes I made:
+      ev.drop()                 -> TypeError: not a function; use ev.preventDefault()
+      getData(ev.target.id)     -> wrong key; use getData("text")
+      appendChild(box)          -> box into itself; use getElementById(id)
+  -->
+  <head>
+    <style>
+      /* mactch id  */
+      #box {
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        border: 1px solid #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Drag the image into the box:</p>
+
+    <div
+      id="box"
+      ondrop="dropHandler(event)"
+      ondragover="dragoverHandler(event)"
+    ></div>
+    <br />
+
+    <!-- image , set draggable="true" -->
+    <img
+      id="dog"
+      src="../practice/Good_dog.jpg"
+      width="100"
+      height="100"
+      draggable="true"
+      ondragstart="dragstartHandler(event)"
+    />
+
+    <script>
+      function dragstartHandler(ev) {
+        // remember WHICH element is being dragged: its id
+
+        // event -> dataTransfer -> setData( type , the id )
+        // save data into "text" as key
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function dragoverHandler(ev) {
+        // allow dropping here (the default is "no drop")
+        ev.preventDefault(); // do not use default
+      }
+
+      function dropHandler(ev) {
+        ev.preventDefault(); // stop the browser opening the image as a page
+
+        //stored the id under the label "text"
+        let id = ev.dataTransfer.getData("text"); // same key as setData
+
+        // this event -> target -> appendChild( ele to append )
+        //You want to move the dragged element, which is the one whose id you just read
+        ev.target.appendChild(document.getElementById(id));
+      }
+    </script>
+  </body>
+</html>

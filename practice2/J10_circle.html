@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="300"
+      height="250"
+      style="border: 1px solid #000"
+    >
+    </canvas>
+
+    <script>
+      let c = document.getElementById("myCanvas");
+      let ctx = c.getContext("2d");
+
+      // full circle, outline
+      ctx.beginPath();
+      ctx.arc(75, 75, 50, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      // half circle, filled
+      ctx.beginPath();
+      ctx.arc(200, 75, 40, 0, Math.PI);
+      ctx.fill();
+
+      // text below both
+      ctx.font = "30px Arial";
+      ctx.fillText("Hello World", 10, 180);
+      ctx.strokeText("Hello World", 10, 220);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+      }
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+      }
+      .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      .topnav a.active {
+        background-color: #04aa6d;
+        color: white;
+      }
+      .topnav .icon {
+        display: none;
+      } /* ☰ hidden when wide */
+
+      /* set 2 stage width then warp when narrow 
+      
+      use @media (max-width: ...)
+      */
+      @media screen and (max-width: 600px) {
+        /* only when narrow: */
+
+        /* not fist means means all the other hide 
+         this inclue the humburger button 
+        */
+        .topnav a:not(:first-child) {
+          display: none;
+        }
+        /* hide all but Home */
+
+        /* bring the humberger back  */
+        .topnav a.icon {
+          float: right;
+          display: block;
+        } /* show ☰ */
+
+        /* after ☰ click:  <div class="topnav responsive" id="myTopnav"> */
+        .topnav.responsive {
+          position: relative;
+        } /* after ☰ click: */
+        .topnav.responsive .icon {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        .topnav.responsive a {
+          /* float: none: no floating, back to normal stacking. */
+          float: none; /* ← THIS makes them stack top-down */
+          display: block; /* ← this makes the hidden ones visible again */
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- the div contain the nav anchor links  -->
+    <div class="topnav" id="nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">News</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"
+        >&#9776;</a
+      >
+      <!-- ☰ -->
+    </div>
+
+    <p style="padding-left: 16px">
+      Resize the window below 600px, then click ☰.
+    </p>
+
+    <script>
+      function toggleMenu() {
+        // to build css , we need class name + responsive
+        let x = document.getElementById("nav");
+        // class names come from the CSS: "topnav" (closed), ".topnav.responsive" (open)
+        if (x.className === "topnav") {
+          // closed -> open: keep "topnav", add " responsive" (leading space!)
+          x.className = "topnav responsive"; // -> "topnav responsive"
+        } else {
+          // open -> closed: back to just "topnav"
+          x.className = "topnav";
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- 
+
+@media   screen      and   (max-width: 600px)   { ... }
+         └ type            └ condition (feature: value)
+
+
+
+Wide window (> 600px):  all links in one row, no ☰
+┌──────┬──────┬─────────┬───────┐
+│ Home │ News │ Contact │ About │
+└──────┴──────┴─────────┴───────┘
+
+Narrow window (≤ 600px): only Home + ☰ on the right
+┌──────┬─────────────────────────┬───┐
+│ Home │                         │ ☰ │
+└──────┴─────────────────────────┴───┘
+
+Narrow + click ☰: all links stacked vertically; click ☰ again → collapse
+┌──────────────────────────────────┬───┐
+│ Home                             │ ☰ │
+│ News                             │   │
+│ Contact                          │   │
+│ About                            │   │
+└──────────────────────────────────┴───┘
+
+-->

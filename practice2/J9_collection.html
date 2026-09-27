@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html>
+  <!-- The idea: some methods return many elements at once,
+      as a collection. 
+      A collection works like an array for 
+      indexing ([i] and .length), but it is not one element,
+      
+      
+let ps = document.getElementsByTagName("p");   // every <p> on the page
+ps.length                                      // how many
+ps[0]                                          // the first one
+ps.style.color = "red";                        // ✗ does nothing: the collection has no .style
+
+for (let i = 0; i < ps.length; i++) {          // ✓ loop and style each one
+  ps[i].style.color = "red";
+}
+
+      -->
+  <body>
+    <h2>here is h2</h2>
+
+    <p>paragraph 1</p>
+    <p class="note">paragraph 2</p>
+    <p class="note">paragraph 3</p>
+
+    <a href="#">anchor 1 </a>
+    <br />
+    <a href="#">anchor 2</a>
+    <p id="out"></p>
+
+    <button onclick="trunAllRed()">All red</button>
+    <button onclick="trunAllBold()">note bold</button>
+    <button onclick="countLinks()">Count</button>
+
+    <script>
+      function trunAllRed() {
+        let pList = document.getElementsByTagName("p");
+
+        for (let i = 0; i < pList.length; i++) {
+          pList[i].style.color = "red";
+        }
+      }
+
+      function trunAllBold() {
+        let notes = document.getElementsByClassName("note");
+
+        for (let i = 0; i < notes.length; i++) {
+          notes[i].style.fontWeight = "bold";
+        }
+      }
+
+      function countLinks() {
+        let out = document.getElementById("out");
+
+        // count how many links , show in p
+        out.innerHTML = "links: " + document.links.length;
+      }
+    </script>
+  </body>
+</html>

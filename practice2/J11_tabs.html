@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+      }
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .topnav a.active {
+        background-color: #04aa6d;
+        color: white;
+      } /* highlighted link */
+    </style>
+  </head>
+  <body>
+    <div class="topnav">
+      <a id="menu0" onclick="showContent('menu0', 'content0')" class="active"
+        >Home</a
+      >
+      <a id="menu1" onclick="showContent('menu1', 'content1')">News</a>
+      <a id="menu2" onclick="showContent('menu2', 'content2')">Contact</a>
+    </div>
+
+    <div id="content0"><h1>HOME</h1></div>
+    <!-- visible at start (Home is active) -->
+    <div id="content1" style="display: none"><h1>NEWS</h1></div>
+    <div id="content2" style="display: none"><h1>CONTACT</h1></div>
+
+    <script>
+      function showContent(menuId, contentId) {
+        // 1. reset: hide ALL pages
+        document.getElementById("content0").style.display = "none";
+        document.getElementById("content1").style.display = "none";
+        document.getElementById("content2").style.display = "none";
+
+        // 1. reset: un-highlight ALL links
+        document.getElementById("menu0").className = "";
+        document.getElementById("menu1").className = "";
+        document.getElementById("menu2").className = "";
+
+        // 2. turn on ONE: the clicked page + link (use the parameters, not a fixed id)
+        document.getElementById(contentId).style.display = "block";
+        document.getElementById(menuId).className = "active";
+      }
+    </script>
+  </body>
+</html>
